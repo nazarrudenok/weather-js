@@ -62,11 +62,11 @@ body {
     padding: 10px;
     width: 260px;
     border-radius: 10px;
-    margin-bottom: 12.5px;
+    margin-bottom: 10px;
 }
 
 .other-data:nth-child(3) {
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 }
 
 .other-data-text {
