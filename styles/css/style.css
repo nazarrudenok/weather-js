@@ -41,16 +41,16 @@ body {
 
 .date {
     font-size: 23px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 .status-img {
-    width: 110px;
+    width: 90px;
 }
 
 .temp {
-    font-size: 33px;
-    margin-top: 5px;
+    font-size: 25px;
+    /* margin-top: 5px; */
     margin-bottom: 10px;
 }
 
@@ -81,9 +81,9 @@ body {
 .uv {
     background: #71FF01;
     color: #000000;
-    font-size: 23px;
+    font-size: 18px;
     font-weight: 700;
-    padding: 7px;
+    padding: 5px;
     border-radius: 25px;
 }
 
