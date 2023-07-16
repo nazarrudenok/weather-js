@@ -17,7 +17,6 @@ body {
 }
 
 .today {
-    /* min-height: 100vh; */
     background: #000000;
     margin: 15px;
     padding: 15px;
@@ -27,29 +26,22 @@ body {
     align-items: center;
 }
 
-.forecast {
-    background: #000000;
-    margin: 15px;
-    padding: 15px;
-    border-radius: 20px;
-}
-
 .location {
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 500;
 }
 
 .date {
-    font-size: 23px;
-    /* margin-bottom: 10px; */
+    font-size: 19px;
+    margin-bottom: 5px;
 }
 
 .status-img {
-    width: 90px;
+    width: 78px;
 }
 
 .temp {
-    font-size: 25px;
+    font-size: 23.5px;
     /* margin-top: 5px; */
     margin-bottom: 10px;
 }
@@ -59,29 +51,29 @@ body {
     justify-content: center;
     align-items: center;
     background: #292929;
-    padding: 10px;
+    padding: 9px;
     width: 260px;
     border-radius: 10px;
     margin-bottom: 10px;
 }
 
 .other-data:nth-child(3) {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .other-data-text {
     margin-right: auto;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .other-data-status {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .uv {
-    background: #71FF01;
+    background: #AD7CFF;
     color: #000000;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 700;
     padding: 5px;
     border-radius: 25px;
@@ -89,5 +81,40 @@ body {
 
 .data-img {
     width: 30px;
+    margin-right: 7.5px;
+}
+
+.forecast-days {
+    background: #000000;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.forecast-day {
+    background: #292929;
+    width: 95%;
+    padding: 9px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 18px;
+}
+
+.forecast-day-img {
+    width: 30px;
+    margin-right: 7.5px;
+}
+
+.forecast-day-temp {
+    margin-left: auto;
+}
+
+.forecast-day-name {
     margin-right: 7.5px;
 }

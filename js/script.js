@@ -4,11 +4,13 @@ const xhr = new XMLHttpRequest();
 
 xhr.open('GET', URL);
 
+const today = new Date();
+const dayName = today.toLocaleString("uk", { weekday: "long" });
+const capitalizedDayName = dayName[0].toUpperCase() + dayName.slice(1);
 var date = document.getElementsByClassName('date-container')[0];
 var js_date = new Date();
 var day = js_date.getDate();
 var month = js_date.getMonth() + 1;
-var year = js_date.getFullYear();
 
 if (day < 10) {
     day = '0' + day;
@@ -16,13 +18,12 @@ if (day < 10) {
     month = '0' + month;
 }
 
-var fullDate = day + '.' + month + '.' + year;
+var fullDate = day + '.' + month;
 
-date.innerHTML = `<p class="date">${fullDate}</p>`;
+date.innerHTML = `<p class="date">${capitalizedDayName} ${fullDate}</p>`;
 
 xhr.onload = () => {
     let response = JSON.parse(xhr.response);
-    console.log(response);
 
     var statusImg = document.getElementsByClassName('status-img-container')[0];
 
@@ -83,7 +84,36 @@ xhr.onload = () => {
     }
     var formattedTime = hours.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
     otherData.innerHTML = `<p class="other-data-status">${formattedTime}</p>`;
+
+    const today = new Date();
+    const dayNames = ["понеділок", "вівторок", "середа", "четвер", "п’ятниця", "субота", "неділя"];
     
+    const shortDayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
+    
+    for (let i = 0; i < 3; i++) {
+        const dayName = shortDayNames[(today.getDay() + i) % 7];
+
+        // document.querySelector(".forecast-days").innerHTML += `<div class="forecast-day"><img src="" class="forecast-day-img"><p class="forecast-day-name">${dayName}</p></div>`;
+
+        var status = response['forecast']['forecastday'][i]['day']['condition']['text'].toLowerCase();
+        var statusFor = response['forecast']['forecastday'][i]['day']['condition']['text'];
+        var maxTemp = Math.round(response['forecast']['forecastday'][i]['day']['maxtemp_c']);
+        var minTemp = Math.round(response['forecast']['forecastday'][i]['day']['mintemp_c']);
+        var maxMinTemp = maxTemp + '° / ' + minTemp + '°';
+        console.log(maxMinTemp);
+
+
+        var statusImg = document.getElementsByClassName('forecast-day-img');
+        if (status.includes("хмарність") || status.includes("хмарно")) {
+            document.querySelector(".forecast-days").innerHTML += `<div class="forecast-day"><img src="styles/images/weather-icons/cloudy.png" class="forecast-day-img"><p class="forecast-day-name">${dayName}</p><p class="forecast-day-status">${statusFor}</p><p class="forecast-day-temp">${maxMinTemp}</p></div>`;
+        } else if (status.includes("дощ") || status.includes("злива")) {
+            document.querySelector(".forecast-days").innerHTML += `<div class="forecast-day"><img src="styles/images/weather-icons/rain.png" class="forecast-day-img"><p class="forecast-day-name">${dayName}</p><p class="forecast-day-status">${statusFor}</p><p class="forecast-day-temp">${maxMinTemp}</p></div>`;
+        } else if (status.includes("сонячно") || status.includes("ясно")) {statusFor
+            document.querySelector(".forecast-days").innerHTML += `<div class="forecast-day"><img src="styles/images/weather-icons/sun.png" class="forecast-day-img"><p class="forecast-day-name">${dayName}</p><p class="forecast-day-status">${statusFor}</p><p class="forecast-day-temp">${maxMinTemp}</p></div>`;
+        } else {
+            document.querySelector(".forecast-days").innerHTML += `<div class="forecast-day"><img src="styles/images/weather-icons/cloudy.png" class="forecast-day-img"><p class="forecast-day-name">${dayName}</p><p class="forecast-day-status">${statusFor}</p><p class="forecast-day-temp">${maxMinTemp}</p></div>`;
+        }
+    }
 }
 
 xhr.send();
