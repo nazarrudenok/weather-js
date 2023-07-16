@@ -70,13 +70,43 @@ body {
     font-size: 18px;
 }
 
-.uv {
+.uv-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     background: #AD7CFF;
-    color: #000000;
-    font-size: 15px;
-    font-weight: 700;
     padding: 5px;
     border-radius: 25px;
+}
+
+.uv-container.expanded {
+    width: 150px;
+    height: 25px;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+
+.uv-container:hover {
+    cursor: pointer;
+}
+
+.uv {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.info {
+    width: 22px;
+    margin-right: 5px;
+}
+
+.info-text {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .data-img {
