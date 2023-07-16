@@ -57,7 +57,7 @@ body {
     margin-bottom: 10px;
 }
 
-.other-data:nth-child(3) {
+.other-data:nth-child(4) {
     margin-bottom: 25px;
 }
 
@@ -126,4 +126,8 @@ body {
 .forecast-title {
     font-size: 19px;
     margin-bottom: 10px;
+}
+
+.pressure {
+    font-size: 15px;
 }

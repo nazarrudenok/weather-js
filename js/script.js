@@ -66,15 +66,18 @@ xhr.onload = () => {
     otherData.innerHTML = `<p class="other-data-status">${Math.round(response['current']['feelslike_c'])}°</p>`;
 
     var otherData = document.getElementsByClassName('other-data-status-container')[2];
-    otherData.innerHTML = `<p class="other-data-status">${Math.round(response['forecast']['forecastday'][0]['day']['daily_chance_of_rain'])}%</p>`;
+    otherData.innerHTML = `<p class="other-data-status">${Math.round(response['current']['pressure_mb'])}<span class="pressure">мбар</span></p>`;
 
     var otherData = document.getElementsByClassName('other-data-status-container')[3];
-    otherData.innerHTML = `<p class="other-data-status">${Math.round(response['current']['wind_kph'])} км/год</p>`;
+    otherData.innerHTML = `<p class="other-data-status">${Math.round(response['forecast']['forecastday'][0]['day']['daily_chance_of_rain'])}%</p>`;
 
     var otherData = document.getElementsByClassName('other-data-status-container')[4];
-    otherData.innerHTML = `<p class="other-data-status">${response['forecast']['forecastday'][0]['astro']['sunrise'].replace("AM", "")}</p>`;
+    otherData.innerHTML = `<p class="other-data-status">${Math.round(response['current']['wind_kph'])} км/год</p>`;
 
     var otherData = document.getElementsByClassName('other-data-status-container')[5];
+    otherData.innerHTML = `<p class="other-data-status">${response['forecast']['forecastday'][0]['astro']['sunrise'].replace("AM", "")}</p>`;
+
+    var otherData = document.getElementsByClassName('other-data-status-container')[6];
     var sunsetTime = response['forecast']['forecastday'][0]['astro']['sunset'];
     var timeComponents = sunsetTime.split(' ')[0].split(':');
     var hours = parseInt(timeComponents[0]);
@@ -93,15 +96,12 @@ xhr.onload = () => {
     for (let i = 0; i < 3; i++) {
         const dayName = shortDayNames[(today.getDay() + i) % 7];
 
-        // document.querySelector(".forecast-days").innerHTML += `<div class="forecast-day"><img src="" class="forecast-day-img"><p class="forecast-day-name">${dayName}</p></div>`;
-
         var status = response['forecast']['forecastday'][i]['day']['condition']['text'].toLowerCase();
         var statusFor = response['forecast']['forecastday'][i]['day']['condition']['text'];
         var maxTemp = Math.round(response['forecast']['forecastday'][i]['day']['maxtemp_c']);
         var minTemp = Math.round(response['forecast']['forecastday'][i]['day']['mintemp_c']);
         var maxMinTemp = maxTemp + '° / ' + minTemp + '°';
         console.log(maxMinTemp);
-
 
         var statusImg = document.getElementsByClassName('forecast-day-img');
         if (status.includes("хмарність") || status.includes("хмарно")) {
