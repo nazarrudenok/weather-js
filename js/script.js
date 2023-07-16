@@ -1,3 +1,38 @@
+var initialText = '';
+var initialStyles = {};
+
+function info(el) {
+  // Перевіряємо, чи вже змінено текст і стилі
+  if (initialText === '' && Object.keys(initialStyles).length === 0) {
+    // Зберігаємо початкові значення
+    initialText = el.innerHTML;
+    initialStyles = {
+      width: el.style.width,
+      height: el.style.height,
+      borderRadius: el.style.borderRadius,
+      padding: el.style.padding
+    };
+
+    // Змінюємо стилі
+    el.style.width = '150px';
+    el.style.height = '25px';
+    el.style.borderRadius = '15px';
+    el.style.padding = '15px';
+    el.innerHTML = `<p class="info-text">Ультрафіолетове випромінювання</p>`;
+  } else {
+    // Повертаємо початкові значення
+    el.style.width = initialStyles.width;
+    el.style.height = initialStyles.height;
+    el.style.borderRadius = initialStyles.borderRadius;
+    el.style.padding = initialStyles.padding;
+    el.innerHTML = initialText;
+
+    // Очищаємо початкові значення
+    initialText = '';
+    initialStyles = {};
+  }
+}
+
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(getWeather);
 } else {
