@@ -1,3 +1,18 @@
+const btn = document.querySelector(".btn");
+
+btn.addEventListener("click", () => {
+    Notification.requestPermission().then(perm => {
+        if (perm == "granted") {
+            new Notification("hello");
+        } else {
+            console.log('hui')
+        }
+    })
+})
+
+
+
+
 var initialText = '';
 var initialStyles = {};
 
