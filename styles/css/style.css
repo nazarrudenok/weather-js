@@ -161,3 +161,56 @@ body {
 .pressure {
     font-size: 15px;
 }
+
+.slider-container {
+    width: 300px;
+    margin: 20px;
+}
+  
+#hour-slider {
+    height: 20px;
+    background: #ccc;
+}
+  
+#selected-hour {
+    text-align: center;
+    margin-top: 10px;
+}
+  
+.weather-slider {
+    display: flex;
+    flex-direction: row;
+    width: 320px;
+    height: 120px;
+    overflow-x: scroll;
+    white-space: nowrap;
+    margin-left: auto;
+    margin-right: auto;
+}
+  
+.weather-slide {
+    display: inline-block;
+    width: 80px;
+    height: 115px;
+    background: #000000;
+    margin-right: 5px;
+    text-align: center;
+    /* line-height: 100px; */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slide-img {
+    margin-top: 10px;
+    width: 40px;
+}
+
+.slide-temp {
+    font-size: 25px;
+}
+
+.slide-wind {
+    margin-bottom: 10px;
+}

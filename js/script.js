@@ -1,18 +1,3 @@
-const btn = document.querySelector(".btn");
-
-btn.addEventListener("click", () => {
-    Notification.requestPermission().then(perm => {
-        if (perm == "granted") {
-            new Notification("hello");
-        } else {
-            console.log('hui')
-        }
-    })
-})
-
-
-
-
 var initialText = '';
 var initialStyles = {};
 
@@ -54,6 +39,7 @@ if (navigator.geolocation) {
     console.log("Геолокація не підтримується вашим браузером.");
 }
   
+
 function getWeather(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
@@ -173,8 +159,21 @@ function getWeather(position) {
             } else {
                 document.querySelector(".forecast-days").innerHTML += `<div class="forecast-day"><img src="styles/images/weather-icons/cloudy.png" class="forecast-day-img"><p class="forecast-day-name">${dayName}</p><p class="forecast-day-status">${statusFor}</p><p class="forecast-day-temp">${maxMinTemp}</p></div>`;
             }
-        }
+        }    
+
+        const hourSlider = document.getElementById("hour-slider");
+        const selectedHour = document.getElementById("selected-hour");
+        const weatherSlider = document.getElementById("weather-slider");
         
+        hourSlider.addEventListener("input", function() {
+          const hour = this.value;
+          selectedHour.textContent = `Година: ${hour}:00`;
+        });
+        
+        weatherSlider.addEventListener("scroll", function() {
+          const scrollLeft = this.scrollLeft;
+          console.log("Scroll Left:", scrollLeft);
+        });
     }
 
     xhr.send();
